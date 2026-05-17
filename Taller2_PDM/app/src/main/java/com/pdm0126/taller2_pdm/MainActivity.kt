@@ -11,6 +11,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.pdm0126.taller2_pdm.screens.restaurantList.RestaurantListScreen
+import com.pdm0126.taller2_pdm.screens.restaurantList.RestaurantListViewModel
 import com.pdm0126.taller2_pdm.ui.theme.Taller2_PDMTheme
 
 class MainActivity : ComponentActivity() {
@@ -20,10 +22,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             Taller2_PDMTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    RestaurantListScreen(RestaurantListViewModel(), modifier = Modifier.padding(innerPadding))
                 }
             }
         }
@@ -41,7 +40,4 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    Taller2_PDMTheme {
-        Greeting("Android")
-    }
 }

@@ -3,10 +3,13 @@ package com.pdm0126.taller2_pdm.componentes
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -21,30 +24,54 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun TopBar(onSearchClick: () -> Unit) {
+fun TopBar(
+    title: String,
+    showBackButton: Boolean = false,
+    showSearchButton: Boolean = false,
+    onSearchClick: () -> Unit = {},
+    onBackClick: () -> Unit = {}
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .border(2.dp, Color(0xFF2C2459)),
+            .border(2.dp, Color(0xFF2C2459))
+            .padding(horizontal = 8.dp, vertical = 8.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(
-            text = "FoodSpot",
-            modifier = Modifier.padding(10.dp), fontSize = 22.sp, fontWeight = FontWeight.Bold
-        )
-
-        IconButton(
-            onClick = onSearchClick, modifier = Modifier.size(32.dp).padding(end = 8.dp)
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            Icon(
-                imageVector = Icons.Filled.Search,
-                contentDescription = "",
-                tint = Color(0xFF2C2459),
-                modifier = Modifier.size(30.dp)
+            if (showBackButton) {
+                IconButton(onClick = onBackClick) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                        contentDescription = "",
+                        tint = Color.Black,
+                        modifier = Modifier.size(28.dp)
+                    )
+                }
+            } else {
+                Spacer(modifier = Modifier.width(8.dp))
+            }
+            Text(
+                text = title, fontSize = 22.sp, fontWeight = FontWeight.Bold
             )
         }
+        if (showSearchButton) {
+            IconButton(
+                onClick = onSearchClick
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.Search,
+                    contentDescription = "",
+                    tint = Color(0xFF2C2459),
+                    modifier = Modifier.size(30.dp)
+                )
+            }
 
+        }
     }
 
 }
@@ -52,5 +79,7 @@ fun TopBar(onSearchClick: () -> Unit) {
 @Preview(showBackground = true)
 @Composable
 fun FoodSpotTopBarPreview() {
-    TopBar(onSearchClick = {})
+    TopBar(
+        title = "FoodSpot",
+        showBackButton = true, onSearchClick = {})
 }
