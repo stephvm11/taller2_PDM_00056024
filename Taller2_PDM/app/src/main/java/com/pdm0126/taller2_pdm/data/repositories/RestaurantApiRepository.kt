@@ -22,4 +22,8 @@ class RestaurantApiRepository : RestaurantRepository {
         return groupedRestaurantsMap
     }
 
+    override suspend fun getRestaurantById(id: Int): Restaurant? {
+        return dummyRestaurants.find { it.id == id }
+    }
+
 }

@@ -20,9 +20,14 @@ import androidx.compose.ui.unit.sp
 import com.pdm0126.taller2_pdm.ui.theme.Taller2_PDMTheme
 
 @Composable
-fun SectionCategory(categoryName: String, restaurants: List<Restaurant>) {
+fun SectionCategory(
+    categoryName: String,
+    restaurants: List<Restaurant>,
+    onRestaurantClick: (Int) -> Unit
+) {
     Column(modifier = Modifier.padding(10.dp)) {
-        Text(text = categoryName,
+        Text(
+            text = categoryName,
             fontWeight = FontWeight.Bold,
             fontSize = 17.sp
         )
@@ -34,42 +39,10 @@ fun SectionCategory(categoryName: String, restaurants: List<Restaurant>) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             items(restaurants) { itemRestaurant ->
-                CardRestaurant(restaurant = itemRestaurant)
+                CardRestaurant(
+                    restaurant = itemRestaurant,
+                    onRestaurantClick = { id -> onRestaurantClick(id) })
             }
         }
-    }
-}
-
-@Preview(showBackground = true, widthDp = 400)
-@Composable
-fun SectionPreview() {
-    val prueba = listOf(
-        Restaurant(
-            id = 1, name = "Burger King", review = 4.5f,
-            description = "", imageUrl = "",
-            categories = listOf("Fast Food"), menu = emptyList()
-        ),
-        Restaurant(
-            id = 2, name = "Pizza Hut", review = 4.0f,
-            description = "", imageUrl = "",
-            categories = listOf("Fast Food"), menu = emptyList()
-        ),
-        Restaurant(
-            id = 3, name = "Taco Bell", review = 3.8f,
-            description = "", imageUrl = "",
-            categories = listOf("Fast Food"), menu = emptyList()
-        ),
-        Restaurant(
-            id = 4, name = "McDonalds", review = 4.2f,
-            description = "", imageUrl = "",
-            categories = listOf("Fast Food"), menu = emptyList()
-        )
-    )
-
-    Taller2_PDMTheme {
-        SectionCategory(
-            categoryName = "Fast Food",
-            restaurants = prueba
-        )
     }
 }

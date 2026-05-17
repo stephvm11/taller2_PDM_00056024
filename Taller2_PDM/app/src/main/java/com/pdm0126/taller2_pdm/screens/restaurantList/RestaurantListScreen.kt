@@ -16,10 +16,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.pdm0126.taller2_pdm.componentes.TopBar
 import com.pdm0126.taller2_pdm.componentes.restaurantList.SectionCategory
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 
 @Composable
-fun RestaurantListScreen(viewModel: RestaurantListViewModel, modifier: Modifier) {
+fun RestaurantListScreen(modifier: Modifier = Modifier,
+                         navigateToSearch: () -> Unit,
+                         navigateToDetail: (Int) -> Unit,
+                         viewModel: RestaurantListViewModel = viewModel()) {
     val groupedRestaurants by viewModel.restaurant.collectAsState()
     val isLoading by viewModel.loading.collectAsState()
 
@@ -40,7 +44,10 @@ fun RestaurantListScreen(viewModel: RestaurantListViewModel, modifier: Modifier)
 
                     SectionCategory(
                         categoryName = categoryName,
-                        restaurants = restaurantList
+                        restaurants = restaurantList,
+                        onRestaurantClick = { id ->
+                            navigateToDetail(id)
+                        }
                     )
                 }
             }
@@ -48,9 +55,3 @@ fun RestaurantListScreen(viewModel: RestaurantListViewModel, modifier: Modifier)
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun RestaurantListScreenPreview(){
-    val mockViewModel = RestaurantListViewModel()
-    RestaurantListScreen(mockViewModel, modifier = Modifier)
-}

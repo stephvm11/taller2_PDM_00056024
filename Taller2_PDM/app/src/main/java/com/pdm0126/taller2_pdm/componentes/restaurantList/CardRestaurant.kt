@@ -1,5 +1,6 @@
 package com.pdm0126.taller2_pdm.componentes.restaurantList
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -21,8 +22,13 @@ import com.pdm0126.taller2_pdm.model.Restaurant
 import com.pdm0126.taller2_pdm.ui.theme.Taller2_PDMTheme
 
 @Composable
-fun CardRestaurant(restaurant: Restaurant) {
-    Card(modifier = Modifier.size(150.dp, 155.dp)) {
+fun CardRestaurant(
+    restaurant: Restaurant,
+    onRestaurantClick: (Int) -> Unit
+) {
+    Card(modifier = Modifier
+        .size(150.dp, 155.dp)
+        .clickable { onRestaurantClick(restaurant.id) }) {
         Column(
             modifier = Modifier.padding(10.dp),
             verticalArrangement = Arrangement.Center,
@@ -31,7 +37,9 @@ fun CardRestaurant(restaurant: Restaurant) {
             AsyncImage(
                 model = restaurant.imageUrl,
                 contentDescription = "",
-                modifier = Modifier.size(130.dp, 90.dp).padding(bottom = 5.dp),
+                modifier = Modifier
+                    .size(130.dp, 90.dp)
+                    .padding(bottom = 5.dp),
                 contentScale = ContentScale.Crop
             )
             Text(
@@ -51,41 +59,4 @@ fun CardRestaurant(restaurant: Restaurant) {
 
     }
 
-}
-
-@Preview(showBackground = true)
-@Composable
-fun CardPreview() {
-    Taller2_PDMTheme {
-        CardRestaurant(
-            restaurant = Restaurant(
-                id = 1,
-                name = "Burgers La Carnosa",
-                review = 4.5f,
-                description = "Las mejores hamburguesas artesanales de la ciudad.",
-                imageUrl = "https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&amp;w=930&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                categories = listOf("Comida rápida", "Comida americana"),
-                menu = listOf(
-                    Dish(
-                        id = 1,
-                        name = "Cheeseburger clásica",
-                        description = "Hamburguesa con queso cheddar, lechuga, tomate y salsa de la casa.",
-                        imageUrl = "https://images.unsplash.com/photo-1508736793122-f516e3ba5569?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    ),
-                    Dish(
-                        id = 2,
-                        name = "Hamburguesa Bacon BBQ",
-                        description = "Crujiente tocino, aros de cebolla y nuestra salsa BBQ especial.",
-                        imageUrl = "https://plus.unsplash.com/premium_photo-1667682209336-9079678199d8?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    ),
-                    Dish(
-                        id = 3,
-                        name = "Loaded fries",
-                        description = "Papas fritas con aceite de trufa y queso cheddar",
-                        imageUrl = "https://images.unsplash.com/photo-1609530127564-bee93ebe1c9e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    )
-                )
-            )
-        )
-    }
 }

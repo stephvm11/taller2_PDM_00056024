@@ -22,7 +22,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             Taller2_PDMTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    RestaurantListScreen(RestaurantListViewModel(), modifier = Modifier.padding(innerPadding))
+                    FoodSpotApp(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
