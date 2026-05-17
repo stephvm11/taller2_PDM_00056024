@@ -8,6 +8,4 @@ data class Restaurant(
     val imageUrl: String,
     val categories: List<String>,
     val menu: List<Dish>
-) {
-    val category: Any
-}
+)

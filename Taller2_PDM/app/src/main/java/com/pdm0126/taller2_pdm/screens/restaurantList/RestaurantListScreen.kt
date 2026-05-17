@@ -21,6 +21,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
 fun RestaurantListScreen(modifier: Modifier = Modifier,
+                         onSearchClick: () -> Unit,
                          navigateToSearch: () -> Unit,
                          navigateToDetail: (Int) -> Unit,
                          viewModel: RestaurantListViewModel = viewModel()) {
@@ -28,11 +29,11 @@ fun RestaurantListScreen(modifier: Modifier = Modifier,
     val isLoading by viewModel.loading.collectAsState()
 
     Scaffold() { paddingValues ->
-        Column(modifier = Modifier.fillMaxSize().padding(paddingValues)) {
+        Column(modifier = Modifier.fillMaxSize().padding(paddingValues).padding(10.dp)) {
             TopBar(
                 title = "FoodSpot",
                 showSearchButton = true,
-                onSearchClick = {}
+                onSearchClick = onSearchClick
             )
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),

@@ -27,7 +27,7 @@ fun RestaurantDetailScreen(
     restaurantId: Int,
     onBackClick: () -> Unit,
     onDishAdded: (String) -> Unit,
-    viewModel: RestaurantDetailViewModel = viewModel(),
+    viewModel: RestaurantDetailViewModel = viewModel()
 ) {
     val restaurant by viewModel.restaurant
 
@@ -37,7 +37,7 @@ fun RestaurantDetailScreen(
     Scaffold() { paddingValues ->
         Column(modifier = Modifier
             .fillMaxSize()
-            .padding(paddingValues)) {
+            .padding(paddingValues).padding(10.dp)) {
             restaurant?.let { currentRestaurant ->
                 TopBar(
                     title = currentRestaurant.name,
@@ -47,7 +47,7 @@ fun RestaurantDetailScreen(
                 Spacer(modifier = Modifier.height(5.dp))
 
                 LazyColumn(
-                    modifier = Modifier.fillMaxSize().padding(15.dp),
+                    modifier = Modifier.fillMaxSize().padding(top = 15.dp, bottom = 15.dp),
                     contentPadding = PaddingValues(10.dp)
                 ) {
                     item {

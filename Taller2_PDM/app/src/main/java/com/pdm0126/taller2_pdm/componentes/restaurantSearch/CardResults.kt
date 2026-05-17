@@ -84,7 +84,7 @@ fun CardResults(
                         .padding(horizontal = 12.dp, vertical = 4.dp)
                 ) {
                     Text(
-                        text = restaurant.category.toString(),
+                        text = restaurant.categories.joinToString(separator = ", "),
                         color = Color(0xFF2C2459),
                         fontSize = 12.sp,
                     )

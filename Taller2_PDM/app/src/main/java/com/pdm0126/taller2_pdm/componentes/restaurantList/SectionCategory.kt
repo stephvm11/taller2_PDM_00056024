@@ -25,7 +25,9 @@ fun SectionCategory(
     restaurants: List<Restaurant>,
     onRestaurantClick: (Int) -> Unit
 ) {
-    Column(modifier = Modifier.padding(10.dp)) {
+    Column() {
+
+        Spacer(modifier = Modifier.height(10.dp))
         Text(
             text = categoryName,
             fontWeight = FontWeight.Bold,
