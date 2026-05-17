@@ -1,10 +1,10 @@
 package com.pdm0126.taller2_pdm.data
 
 import com.pdm0126.taller2_pdm.model.Dish
-import com.pdm0126.taller2_pdm.model.Resturant
+import com.pdm0126.taller2_pdm.model.Restaurant
 
 val Restaurantes = listOf(
-    Resturant(
+    Restaurant(
         id = 1,
         name = "Burgers La Carnosa",
         review = 4.5f,
@@ -32,7 +32,7 @@ val Restaurantes = listOf(
             )
         )
     ),
-    Resturant(
+    Restaurant(
         id = 2,
         name = "Sweet Heaven",
         review = 4.8f,
@@ -60,7 +60,7 @@ val Restaurantes = listOf(
             )
         )
     ),
-    Resturant(
+    Restaurant(
         id = 3,
         name = "El Mariachi",
         review = 4.6f,
@@ -88,7 +88,7 @@ val Restaurantes = listOf(
             )
         )
     ),
-    Resturant(
+    Restaurant(
         id = 4,
         name = "Sakura Sushi",
         review = 4.7f,
@@ -116,7 +116,7 @@ val Restaurantes = listOf(
             )
         )
     ),
-    Resturant(
+    Restaurant(
         id = 5,
         name = "Crispy Chicken Shack",
         review = 4.3f,
@@ -144,7 +144,7 @@ val Restaurantes = listOf(
             )
         )
     ),
-    Resturant(
+    Restaurant(
         id = 6,
         name = "The Waffle Corner",
         review = 4.9f,
@@ -172,7 +172,7 @@ val Restaurantes = listOf(
             )
         )
     ),
-    Resturant(
+    Restaurant(
         id = 7,
         name = "El Rincón del Taco",
         review = 4.4f,
@@ -200,7 +200,7 @@ val Restaurantes = listOf(
             )
         )
     ),
-    Resturant(
+    Restaurant(
         id = 8,
         name = "Wok And Roll",
         review = 4.5f,
@@ -228,7 +228,7 @@ val Restaurantes = listOf(
             )
         )
     ),
-    Resturant(
+    Restaurant(
         id = 9,
         name = "Pizza Planet",
         review = 4.1f,
@@ -256,7 +256,7 @@ val Restaurantes = listOf(
             )
         )
     ),
-    Resturant(
+    Restaurant(
         id = 10,
         name = "Taste of Bangkok",
         review = 4.6f,
@@ -284,7 +284,7 @@ val Restaurantes = listOf(
             )
         )
     ),
-    Resturant(
+    Restaurant(
         id = 11,
         name = "Pho Vietnam",
         review = 4.5f,
